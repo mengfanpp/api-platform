@@ -28,7 +28,7 @@
 
 services:
   platform-api:
-    image: ghcr.io/wso2/api-platform/platform-api:0.16.0-SNAPSHOT
+    image: ghcr.io/wso2/api-platform/platform-api:0.16.0
     restart: unless-stopped
     # Mounts the single source-of-truth config shipped with the Platform API
     # itself (../../platform-api/config/config.toml) rather than keeping a
@@ -41,7 +41,7 @@ services:
         format: raw
     volumes:
       - ../../platform-api/config/config.toml:/etc/platform-api/config.toml:ro
-      - ../../platform-api/resources/role-to-scope-mapping.yaml:/etc/platform-api/role-to-scope-mapping.yaml:ro
+      - ./resources/platform-api-role-to-scope-mapping.yaml:/etc/platform-api/role-to-scope-mapping.yaml:ro
       - platform-api-data:/app/data
       # Certs land under /app/data/certs to match the binary's compiled
       # default cert_file/key_file paths (./data/certs/{cert,key}.pem,

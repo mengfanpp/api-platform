@@ -14,7 +14,7 @@
 
 services:
   platform-api:
-    image: ghcr.io/wso2/api-platform/platform-api:0.16.0-SNAPSHOT
+    image: ghcr.io/wso2/api-platform/platform-api:0.16.0
     restart: unless-stopped
     profiles: ["platform-api"]
     command: ["-config", "/etc/platform-api/config.toml"]
@@ -24,7 +24,7 @@ services:
         format: raw
     volumes:
       - ../../platform-api/config/config.toml:/etc/platform-api/config.toml:ro
-      - ../../platform-api/resources/role-to-scope-mapping.yaml:/etc/platform-api/role-to-scope-mapping.yaml:ro
+      - ./resources/platform-api-role-to-scope-mapping.yaml:/etc/platform-api/role-to-scope-mapping.yaml:ro
       - platform-api-data:/app/data
       - ./resources/certificates:/app/data/certs:ro
       - ./resources/keys:/etc/platform-api/keys:ro
